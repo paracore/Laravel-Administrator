@@ -1,4 +1,4 @@
-<?php namespace Frozennode\Administrator;
+<?php namespace ParaCore\Administrator;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 use Symfony\Component\HttpFoundation\File\File as SFile;
 use Illuminate\Support\Facades\Validator as LValidator;
-use Frozennode\Administrator\Fields\Field;
+use ParaCore\Administrator\Fields\Field;
 
 /**
  * Handles all requests related to managing the data models

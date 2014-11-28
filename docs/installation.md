@@ -20,7 +20,7 @@ To install Administrator as a Composer package to be used with Laravel 4, simply
 ..and run `composer update`.  Once it's installed, you can register the service provider in `app/config/app.php` in the `providers` array:
 
 	'providers' => array(
-	    'Frozennode\Administrator\AdministratorServiceProvider',
+	    'ParaCore\Administrator\AdministratorServiceProvider',
 	)
 
 

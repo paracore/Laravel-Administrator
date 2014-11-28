@@ -1,7 +1,7 @@
 <?php
 
-use Frozennode\Administrator\ModelHelper;
-use Frozennode\Administrator\Fields\Field;
+use ParaCore\Administrator\ModelHelper;
+use ParaCore\Administrator\Fields\Field;
 
 //View Composers
 

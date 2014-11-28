@@ -1,5 +1,5 @@
 <?php
-namespace Frozennode\Administrator\Tests;
+namespace ParaCore\Administrator\Tests;
 
 use Mockery as m;
 
@@ -27,7 +27,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase {
 	public function setUp()
 	{
 		$this->url = m::mock('Illuminate\Routing\UrlGenerator');
-		$this->validator = m::mock('Frozennode\Administrator\Validator')->makePartial();
+		$this->validator = m::mock('ParaCore\Administrator\Validator')->makePartial();
 	}
 
 	/**
@@ -110,7 +110,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase {
 
 	public function testValidateEloquentSucceeds()
 	{
-		$this->assertTrue($this->validator->validateEloquent(null, 'Frozennode\Administrator\Tests\EloquentStub', null));
+		$this->assertTrue($this->validator->validateEloquent(null, 'ParaCore\Administrator\Tests\EloquentStub', null));
 	}
 
 	public function testValidateEloquentFails()

@@ -1,5 +1,5 @@
 <?php
-namespace Frozennode\Administrator\Tests\Fields;
+namespace ParaCore\Administrator\Tests\Fields;
 
 use Mockery as m;
 
@@ -38,11 +38,11 @@ class TimeTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->validator = m::mock('Frozennode\Administrator\Validator');
-		$this->config = m::mock('Frozennode\Administrator\Config\Model\Config');
+		$this->validator = m::mock('ParaCore\Administrator\Validator');
+		$this->config = m::mock('ParaCore\Administrator\Config\Model\Config');
 		$this->db = m::mock('Illuminate\Database\DatabaseManager');
 		$options = array('field_name' => 'field', 'type' => 'time');
-		$this->field = m::mock('Frozennode\Administrator\Fields\Time', array($this->validator, $this->config, $this->db, $options))->makePartial();
+		$this->field = m::mock('ParaCore\Administrator\Fields\Time', array($this->validator, $this->config, $this->db, $options))->makePartial();
 	}
 
 	/**

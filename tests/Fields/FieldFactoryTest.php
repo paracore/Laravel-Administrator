@@ -1,5 +1,5 @@
 <?php
-namespace Frozennode\Administrator\Tests\Fields;
+namespace ParaCore\Administrator\Tests\Fields;
 
 use Mockery as m;
 
@@ -55,10 +55,10 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->validator = m::mock('Frozennode\Administrator\Validator');
-		$this->config = m::mock('Frozennode\Administrator\Config\Model\Config');
+		$this->validator = m::mock('ParaCore\Administrator\Validator');
+		$this->config = m::mock('ParaCore\Administrator\Config\Model\Config');
 		$this->db = m::mock('Illuminate\Database\DatabaseManager');
-		$this->factory = m::mock('Frozennode\Administrator\Fields\Factory', array($this->validator, $this->config, $this->db))->makePartial();
+		$this->factory = m::mock('ParaCore\Administrator\Fields\Factory', array($this->validator, $this->config, $this->db))->makePartial();
 	}
 
 	/**
@@ -78,7 +78,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetFieldObject()
 	{
-		$this->factory->shouldReceive('getFieldTypeClass')->once()->andReturn('Frozennode\Administrator\Tests\Fields\FieldStub');
+		$this->factory->shouldReceive('getFieldTypeClass')->once()->andReturn('ParaCore\Administrator\Tests\Fields\FieldStub');
 		$this->assertEquals(get_class($this->factory->getFieldObject(array('type' => 'foo'))), get_class(new FieldStub));
 	}
 
@@ -381,7 +381,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 		$this->config->shouldReceive('getDataModel')->once()->andReturn($model);
 		$this->db->shouldReceive('raw')->once()
 					->shouldReceive('getTablePrefix')->once();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->once()->andReturn(true);
 		$this->factory->shouldReceive('getFieldObjectByName')->once()->andReturn($field)
 						->shouldReceive('formatSelectedItems')->once()->andReturn(array(1))
@@ -399,7 +399,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 		$this->config->shouldReceive('getDataModel')->once()->andReturn($model);
 		$this->db->shouldReceive('raw')->once()
 					->shouldReceive('getTablePrefix')->once();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->once()->andReturn(true);
 		$this->factory->shouldReceive('getFieldObjectByName')->once()->andReturn($field)
 						->shouldReceive('formatSelectedItems')->once()->andReturn(array());
@@ -417,7 +417,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 		$this->config->shouldReceive('getDataModel')->once()->andReturn($model);
 		$this->db->shouldReceive('raw')->once()
 					->shouldReceive('getTablePrefix')->once();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->twice()->andReturn(false, function() {});
 		$this->factory->shouldReceive('getFieldObjectByName')->once()->andReturn($field)
 						->shouldReceive('applyConstraints')->once()
@@ -429,7 +429,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 	public function testFilterBySearchTermNoTerm()
 	{
 		$query = m::mock('Illuminate\Database\Eloquent\Builder');
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->never();
 		$this->factory->filterBySearchTerm(null, $query, $field, array(), '');
 	}
@@ -440,7 +440,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 		$query->shouldReceive('where')->twice()
 				->shouldReceive('take')->once()
 				->shouldReceive('whereNotIn')->once();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->twice()->andReturn(array('first', 'second'), 0);
 		$this->db->shouldReceive('raw')->twice()->andReturn('');
 		$this->factory->filterBySearchTerm('foo', $query, $field, array(1), '');
@@ -451,7 +451,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 		$query = m::mock('Illuminate\Database\Eloquent\Builder');
 		$query->shouldReceive('where')->twice()
 				->shouldReceive('take')->once();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->twice()->andReturn(array('first', 'second'), 0);
 		$this->db->shouldReceive('raw')->twice()->andReturn('');
 		$this->factory->filterBySearchTerm('foo', $query, $field, array(), '');
@@ -477,7 +477,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 		$query = m::mock('Illuminate\Database\Eloquent\Builder');
 		$query->shouldReceive('whereIn')->once()
 				->shouldReceive('orderBy')->once();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->times(3)->andReturn(true);
 		$this->factory->filterQueryBySelectedItems($query, array(), $field, '');
 	}
@@ -487,9 +487,9 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 		$relatedModel = m::mock(array('getRelated' => null));
 		$otherModel = m::mock(array('getRelated' => null));
 		$model = m::mock(array('this_relationship' => $relatedModel, 'key' => $otherModel));
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->twice()->andReturn(array('key' => 'other_relationship'), 'this_relationship');
-		$otherField = m::mock('Frozennode\Administrator\Fields\Field');
+		$otherField = m::mock('ParaCore\Administrator\Fields\Field');
 		$otherField->shouldReceive('constrainQuery')->once();
 		$this->config->shouldReceive('setDataModel')->twice()
 						->shouldReceive('getDataModel')->once()->andReturn($model);
@@ -500,7 +500,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testApplyConstraintsEmpty()
 	{
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->once()->andReturn(array());
 		$query = m::mock('Illuminate\Database\Eloquent\Builder');
 		$this->factory->applyConstraints(array(), $query, $field);
@@ -508,7 +508,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testApplyConstraintsInvalidConstraintSupplied()
 	{
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->once()->andReturn(array('other_key' => 'relationship'));
 		$query = m::mock('Illuminate\Database\Eloquent\Builder');
 		$this->factory->applyConstraints(array('key' => array(1, 2)), $query, $field);
@@ -516,7 +516,7 @@ class FieldFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testFormatSelectOptions()
 	{
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('ParaCore\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->twice()->andReturn('name_field');
 		$firstResult = m::mock('stdClass');
 		$firstResult->shouldReceive('getKey')->once()->andReturn(1)

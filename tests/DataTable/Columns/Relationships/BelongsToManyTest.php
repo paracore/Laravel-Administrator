@@ -1,5 +1,5 @@
 <?php
-namespace Frozennode\Administrator\Tests\DataTable\Columns\Relationships;
+namespace ParaCore\Administrator\Tests\DataTable\Columns\Relationships;
 
 use Mockery as m;
 
@@ -38,12 +38,12 @@ class BelongsToManyTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->validator = m::mock('Frozennode\Administrator\Validator');
-		$this->config = m::mock('Frozennode\Administrator\Config\Model\Config');
+		$this->validator = m::mock('ParaCore\Administrator\Validator');
+		$this->config = m::mock('ParaCore\Administrator\Config\Model\Config');
 		$this->db = m::mock('Illuminate\Database\DatabaseManager');
 
 		$options = array('column_name' => 'test', 'relationship' => 'method', 'select' => 'foo');
-		$this->column = m::mock('Frozennode\Administrator\DataTable\Columns\Relationships\BelongsToMany',
+		$this->column = m::mock('ParaCore\Administrator\DataTable\Columns\Relationships\BelongsToMany',
 											array($this->validator, $this->config, $this->db, $options))->makePartial();
 	}
 
