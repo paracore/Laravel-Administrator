@@ -1,17 +1,17 @@
 {
-    "name": "frozennode/administrator",
-    "description": "A database interface package for Laravel",
-    "homepage": "http://administrator.frozennode.com",
-    "keywords": ["administrator", "admin", "database", "laravel-administrator", "laravel", "cms"],
+    "name": "paracore/administrator",
+    "description": "",
+    "homepage": "http://www.paracore.com",
+    "keywords": [],
     "license": "MIT",
     "authors": [
         {
-            "name": "Jan Hartigan",
-            "email": "jan@frozennode.com"
+            "name": "Jake Harris",
+            "email": "jake@paracore.com"
         }
     ],
     "support": {
-        "issues": "https://github.com/FrozenNode/Laravel-Administrator/issues"
+        "issues": "https://github.com/paracore/Laravel-Administrator/issues"
     },
     "require": {
         "php": ">=5.3.0",
