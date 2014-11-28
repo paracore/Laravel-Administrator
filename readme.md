@@ -26,7 +26,7 @@ To install Administrator as a Composer package to be used with Laravel 4, simply
 )
 ```
 
-Then publish the config file with `php artisan config:publish frozennode/administrator`. This will add the file `app/config/packages/frozennode/administrator/administrator.php`. This [config file](http://administrator.frozennode.com/docs/configuration) is the primary way you interact with Administrator.
+Then publish the config file with `php artisan config:publish paracore/administrator`. This will add the file `app/config/packages/paracore/administratoradministrator.php`. This [config file](http://administrator.frozennode.com/docs/configuration) is the primary way you interact with Administrator.
 
 Then finally you need to publish the package's assets with the `php artisan asset:publish frozennode/administrator` command.
 

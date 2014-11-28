@@ -7,7 +7,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Any Eloquent model (or any object that ultimately extends from an Eloquent model) can be represented by a model configuration file. These files can be kept anywhere in your application directory structure. All you do is provide the path to their location in the `app/config/packages/frozennode/administrator/administrator.php` config file with the [`model_config_path`](/docs/configuration#model-config-path) option. The **file names** of these files correspond to the values supplied in the [`menu`](/docs/configuration#menu) option, also in the `administrator.php` config.
+Any Eloquent model (or any object that ultimately extends from an Eloquent model) can be represented by a model configuration file. These files can be kept anywhere in your application directory structure. All you do is provide the path to their location in the `app/config/packages/paracore/administratoradministrator.php` config file with the [`model_config_path`](/docs/configuration#model-config-path) option. The **file names** of these files correspond to the values supplied in the [`menu`](/docs/configuration#menu) option, also in the `administrator.php` config.
 
 > **Note**: These are also the **uris** for each model in the admin interface.
 
